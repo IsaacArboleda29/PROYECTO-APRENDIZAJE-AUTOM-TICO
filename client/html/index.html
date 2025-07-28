@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Predicción de Partidos</title>
-    <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Predicción de Partidos</title>
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>Predicción de Partidos</h1>
-        <form id="predictForm">
-            <input type="text" id="team1" placeholder="Equipo 1" required>
-            <input type="text" id="team2" placeholder="Equipo 2" required>
-            <button type="submit">Predecir</button>
-        </form>
-        <p id="result"></p>
+  <div class="container">
+    <h1>Predicción de Partidos</h1>
+    <div class="escudos">
+      <div class="escudo-container" id="container1">
+        <img id="escudo1" src="" alt="Equipo 1" />
+        <p id="nombre1" class="nombre-equipo"></p>
+      </div>
+
+      <form id="predictForm">
+        <div class="select-row">
+          <select id="team1" required>
+            <option value="">Selecciona Equipo 1</option>
+          </select>
+          <select id="team2" required>
+            <option value="">Selecciona Equipo 2</option>
+          </select>
+        </div>
+        <div class="button-row">
+          <button type="submit">Predecir</button>
+        </div>
+      </form>
+
+      <div class="escudo-container" id="container2">
+        <img id="escudo2" src="" alt="Equipo 2" />
+        <p id="nombre2" class="nombre-equipo"></p>
+      </div>
     </div>
-    <script src="../js/script.js"></script>
+    <p id="result"></p>
+  </div>
+
+  <script src="../js/script.js"></script>
 </body>
 </html>
+    
