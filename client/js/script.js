@@ -7,29 +7,27 @@ const equipos = [
 ];
 
 const mapaEscudos = {
-  "CS Emelec": "EscudoCSEmelec.png", 
-  "Mushuc Runa":"MushucRuna.png",
-   "LDU de Quito":"Liga_Deportiva_Universitaria_de_Quito.png",
-    "Delfín":"Delfín_SC_logo.png",
-     "Orense":"Orense_SC_logo.png",
-  "Guayaquil City":"Guayaquil_City.png",
-   "Cumbayá":"Cumbayá_FC.png",
-    "Técnico Univ.":"Técnico_Universitario.png",
-     "Deportivo Cuenca":"Depcuenca.png",
-      "SD Aucas":"SD_Aucas_logo.png",
-  "Univ Católica":"Ucatólica.png",
+  "CS Emelec": "EscudoCSEmelec.png",
+  "Mushuc Runa": "MushucRuna.png",
+  "LDU de Quito": "Liga_Deportiva_Universitaria_de_Quito.png",
+  "Delfín": "Delfín_SC_logo.png",
+  "Orense": "Orense_SC_logo.png",
+  "Guayaquil City": "Guayaquil_City.png",
+  "Cumbayá": "Cumbayá_FC.png",
+  "Técnico Univ.": "Técnico_Universitario.png",
+  "Deportivo Cuenca": "Depcuenca.png",
+  "SD Aucas": "SD_Aucas_logo.png",
+  "Univ Católica": "Ucatólica.png",
   "Barcelona": "Barcelona_Sporting_Club_Logo.png",
-  "Independiente":"Independiente_del_Valle_Logo_2022.png",
-   "Gualaceo Sporting Club":"Escudo_Gualaceo_Sporting_Club.png",
-  "Club 9 de Octubre":"9_de_Octubre_FC_escudo.png",
-   "Macará":"Macara_6.png",
-    "Libertad":"Libertad_FC_Ecuador.png", 
-    "El Nacional":"Nacional.png", 
-    "Imbabura":"Imbabura.png",
-  "Manta Fútbol Club":"Manta_F.C.png",
-   "Vinotinto":"Vinotinto.png"
-
-  // Agrega más equipos si tienes imágenes
+  "Independiente": "Independiente_del_Valle_Logo_2022.png",
+  "Gualaceo Sporting Club": "Escudo_Gualaceo_Sporting_Club.png",
+  "Club 9 de Octubre": "9_de_Octubre_FC_escudo.png",
+  "Macará": "Macara_6.png",
+  "Libertad": "Libertad_FC_Ecuador.png",
+  "El Nacional": "Nacional.png",
+  "Imbabura": "Imbabura.png",
+  "Manta Fútbol Club": "Manta_F.C.png",
+  "Vinotinto": "Vinotinto.png"
 };
 
 const team1Select = document.getElementById('team1');
@@ -44,7 +42,6 @@ const escudo2Img = document.getElementById('escudo2');
 const nombre1 = document.getElementById('nombre1');
 const nombre2 = document.getElementById('nombre2');
 
-// Llenar los selects
 equipos.forEach(equipo => {
   const option1 = document.createElement('option');
   option1.value = equipo;
