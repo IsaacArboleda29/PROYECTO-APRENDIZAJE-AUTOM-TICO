@@ -7,12 +7,10 @@
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
-  <!-- Título superior fijo -->
   <header class="titulo-fijo">
     <h1>UPSBET</h1>
   </header>
 
-  <!-- Contenedor principal -->
   <div class="container">
     <h2 class="subtitulo">Predicción de Partidos</h2>
 
@@ -31,8 +29,10 @@
             <option value="">Selecciona Equipo 2</option>
           </select>
         </div>
-        <div class="button-row">
-          <button type="submit">Predecir</button>
+
+        <!-- Botón personalizado -->
+        <div class="btn-container">
+          <div class="btn"><a href="#" id="predictBtn">Predecir</a></div>
         </div>
       </form>
 
@@ -45,7 +45,6 @@
     <p id="result"></p>
   </div>
 
-  <!-- Balón girando -->
   <div class="planet-container">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Football_iu_1996.svg" alt="Balón de fútbol" class="ball" />
   </div>

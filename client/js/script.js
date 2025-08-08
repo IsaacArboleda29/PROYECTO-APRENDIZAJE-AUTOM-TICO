@@ -62,7 +62,7 @@ function mostrarEscudoYNombre(equipo, imgElement, nombreElement, containerElemen
     nombreElement.style.display = 'block';
 
     containerElement.classList.remove('show-left', 'show-right');
-    void containerElement.offsetWidth;
+    void containerElement.offsetWidth; // Reiniciar animaciones
 
     if (lado === 'left') {
       containerElement.classList.add('show-left');
@@ -78,6 +78,7 @@ function mostrarEscudoYNombre(equipo, imgElement, nombreElement, containerElemen
   }
 }
 
+// Mostrar escudos al cambiar equipos
 team1Select.addEventListener('change', () => {
   mostrarEscudoYNombre(team1Select.value, escudo1Img, nombre1, escudo1Container, 'left');
 });
@@ -86,11 +87,17 @@ team2Select.addEventListener('change', () => {
   mostrarEscudoYNombre(team2Select.value, escudo2Img, nombre2, escudo2Container, 'right');
 });
 
-document.getElementById('predictForm').addEventListener('submit', function (e) {
+// Predicción con botón animado
+document.getElementById('predictBtn').addEventListener('click', function (e) {
   e.preventDefault();
 
   const team1 = team1Select.value;
   const team2 = team2Select.value;
+
+  if (team1 === "" || team2 === "") {
+    document.getElementById('result').innerText = "Selecciona ambos equipos.";
+    return;
+  }
 
   if (team1 === team2) {
     document.getElementById('result').innerText = "Por favor, selecciona equipos diferentes.";
