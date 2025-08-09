@@ -62,7 +62,7 @@ function mostrarEscudoYNombre(equipo, imgElement, nombreElement, containerElemen
     nombreElement.style.display = 'block';
 
     containerElement.classList.remove('show-left', 'show-right');
-    void containerElement.offsetWidth; // Reiniciar animaciones
+    void containerElement.offsetWidth;
 
     if (lado === 'left') {
       containerElement.classList.add('show-left');
@@ -78,7 +78,6 @@ function mostrarEscudoYNombre(equipo, imgElement, nombreElement, containerElemen
   }
 }
 
-// Mostrar escudos al cambiar equipos
 team1Select.addEventListener('change', () => {
   mostrarEscudoYNombre(team1Select.value, escudo1Img, nombre1, escudo1Container, 'left');
 });
@@ -87,7 +86,6 @@ team2Select.addEventListener('change', () => {
   mostrarEscudoYNombre(team2Select.value, escudo2Img, nombre2, escudo2Container, 'right');
 });
 
-// Predicción con botón animado
 document.getElementById('predictBtn').addEventListener('click', function (e) {
   e.preventDefault();
 

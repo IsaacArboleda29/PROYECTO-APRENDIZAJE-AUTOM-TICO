@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-image: url('../img/heli.jpg'); /* Fondo de imagen */
+  background-image: url('../img/heli.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -19,9 +19,7 @@ body {
   position: relative;
   color: #fff;
   overflow-x: hidden;
-  
 }
-
 
 /* Título fijo */
 .titulo-fijo {
@@ -127,20 +125,58 @@ form {
   justify-content: center;
 }
 
-select {
-  padding: 10px;
+/* Select mejorado */
+.custom-select {
+  position: relative;
+  display: inline-block;
   width: 240px;
+}
+
+.custom-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  padding: 12px 20px;
   font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  background-color: #ffffff;
-  color: #000;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  color: #000000;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-.button-row {
-  text-align: center;
+.custom-select select:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 
+.custom-select select:focus {
+  border-color: #ff002f;
+  box-shadow: 0 0 10px #ff002f;
+}
+
+/* Flecha personalizada */
+.custom-select::after {
+  content: "▼";
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.custom-select:hover::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Botón estándar que tenías antes (no usado porque tienes el animado) */
 button {
   padding: 10px 20px;
   background-color: #0077cc;
@@ -197,30 +233,56 @@ button:hover {
   animation-delay: 0.5s;
 }
 
-/* Balón girando (tipo planeta) */
-.planet-container {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 100px;
-  perspective: 1000px;
-  z-index: 0;
-}
-
+/* Balón girando fijo en pie pantalla */
 .ball {
-  width: 100%;
-  height: 100%;
-  animation: spin 6s linear infinite;
-  transform-style: preserve-3d;
-  border-radius: 50%;
+    position: fixed;
+    bottom: -175px;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    transform-style: preserve-3d;
+    transform: translateX(-50%) rotateX(-20deg) rotateY(30deg);
+    animation: spin 30s linear infinite;
+    will-change: transform;
+    cursor: pointer;
+    z-index: 1000;
 }
 
 @keyframes spin {
-  from { transform: rotateY(0deg); }
-  to { transform: rotateY(360deg); }
+    from {
+        transform: translateX(-50%) rotateX(-20deg) rotateY(0deg);
+    }
+    to {
+        transform: translateX(-50%) rotateX(-20deg) rotateY(360deg);
+    }
 }
+
+.panel {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    backface-visibility: hidden;
+    transition: transform 0.1s ease;
+}
+
+.white {
+    background-color: #f8f8f871;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    filter: brightness(0.95);
+}
+
+/* Posicionamiento 3D de los paneles Hexágonos (20) */
+.h1  { transform: rotateX(31.72deg)  translateZ(120px); }
+.h2  { transform: rotateY(72deg)    rotateX(31.72deg)  translateZ(120px); }
+.h3  { transform: rotateY(144deg)   rotateX(31.72deg)  translateZ(120px); }
+.h4  { transform: rotateY(216deg)   rotateX(31.72deg)  translateZ(120px); }
+.h5  { transform: rotateY(288deg)   rotateX(31.72deg)  translateZ(120px); }
+.h6  { transform: rotateY(36deg)    rotateX(90deg)     translateZ(120px); }
+.h11 { transform: rotateY(0deg)     rotateX(-31.72deg) translateZ(120px); }
+.h12 { transform: rotateY(72deg)    rotateX(-31.72deg) translateZ(120px); }
+.h13 { transform: rotateY(144deg)   rotateX(-31.72deg) translateZ(120px); }
+.h14 { transform: rotateY(216deg)   rotateX(-31.72deg) translateZ(120px); }
+.h15 { transform: rotateY(288deg)   rotateX(-31.72deg) translateZ(120px); }
 
 /* Responsive */
 @media (max-width: 600px) {
@@ -239,8 +301,7 @@ button:hover {
     font-size: 16px;
   }
 
-  select,
-  button {
+  .custom-select {
     width: 100%;
   }
 
@@ -256,111 +317,111 @@ button:hover {
     padding: 40px 20px;
   }
 }
+
 /* Botón tipo glassmorphism animado */
 .btn-container {
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
 }
 
 .btn {
-    width: 250px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin: 20px;
-    cursor: pointer;
+  width: 250px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 20px;
+  cursor: pointer;
 }
 
 .btn a {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 10px 20px rgba(255, 0, 106, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 30px;
-    padding: 10px;
-    letter-spacing: 1px;
-    text-decoration: none;
-    overflow: hidden;
-    color: #fff;
-    font-weight: 500;
-    z-index: 1;
-    transition: all 0.5s ease;
-    backdrop-filter: blur(15px);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px px rgba(255, 0, 106, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 10px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  overflow: hidden;
+  color: #fff;
+  font-weight: 500;
+  z-index: 1;
+  transition: all 0.5s ease;
+  backdrop-filter: blur(15px);
 }
 
 .btn:hover a {
-    letter-spacing: 4px;
-    background: rgba(0, 255, 255, 0.1);
-    color: #f3f3f3;
-    text-shadow: 0 0 5px #ff002f, 0 0 15px #ff002f, 0 0 30px #ff002f, 0 0 60px #ff002f;
+  letter-spacing: 4px;
+  background: rgba(0, 255, 255, 0.1);
+  color: #f3f3f3;
+  text-shadow: 0 0 5px #ff002f, 0 0 15px #ff002f, 0 0 30px #ff002f, 0 0 60px #ff002f;
 }
 
 .btn a::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -75%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
-    transform: skewX(-25deg);
-    animation: shine 2s infinite;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+  transform: skewX(-25deg);
+  animation: shine 2s infinite;
 }
 
 @keyframes shine {
-    0% { left: -75%; }
-    50% { left: 100%; }
-    100% { left: 100%; }
+  0% { left: -75%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
 }
 
 .btn::before,
 .btn::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 10px;
-    background: #ff002f;
-    border-radius: 10px;
-    transition: 0.5s ease;
-    box-shadow: 0 0 5px #ff002f, 0 0 15px #ff002f, 0 0 30px #ff002f, 0 0 60px #ff002f;
-    animation: pulse-glow 2s infinite ease-in-out;
-    opacity: 1;
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 10px;
+  background: #ff002f;
+  border-radius: 10px;
+  transition: 0.5s ease;
+  box-shadow: 0 0 5px #ff002f, 0 0 15px #ff002f, 0 0 30px #ff002f, 0 0 60px #ff002f;
+  animation: pulse-glow 2s infinite ease-in-out;
+  opacity: 1;
 }
 
 .btn::before {
-    bottom: -5px;
+  bottom: -5px;
 }
 
 .btn::after {
-    top: -5px;
+  top: -5px;
 }
 
 .btn:hover::before,
 .btn:hover::after {
-    height: 78%;
-    width: 90%;
-    border-radius: 30px;
-    bottom: 0;
-    top: 0;
+  height: 78%;
+  width: 90%;
+  border-radius: 30px;
+  bottom: 0;
+  top: 0;
 }
 
 @keyframes pulse-glow {
-    0%, 100% {
-        box-shadow: 0 0 5px #ff002f, 0 0 15px #ff002f, 0 0 30px #ff002f, 0 0 60px #ff002f;
-    }
-    50% {
-        box-shadow: 0 0 15px #ff4d6d, 0 0 30px #ff4d6d, 0 0 45px #ff4d6d, 0 0 75px #ff4d6d;
-    }
+  0%, 100% {
+    box-shadow: 0 0 5px #ff002f, 0 0 15px #ff002f, 0 0 30px #ff002f, 0 0 60px #ff002f;
+  }
+  50% {
+    box-shadow: 0 0 15px #ff4d6d, 0 0 30px #ff4d6d, 0 0 45px #ff4d6d, 0 0 75px #ff4d6d;
+  }
 }
-

@@ -22,12 +22,16 @@
 
       <form id="predictForm">
         <div class="select-row">
-          <select id="team1" required>
-            <option value="">Selecciona Equipo 1</option>
-          </select>
-          <select id="team2" required>
-            <option value="">Selecciona Equipo 2</option>
-          </select>
+          <div class="custom-select">
+            <select id="team1" required>
+              <option value="">Selecciona Equipo 1</option>
+            </select>
+          </div>
+          <div class="custom-select">
+            <select id="team2" required>
+              <option value="">Selecciona Equipo 2</option>
+            </select>
+          </div>
         </div>
 
         <!-- Botón personalizado -->
@@ -46,9 +50,21 @@
   </div>
 
   <div class="planet-container">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Football_iu_1996.svg" alt="Balón de fútbol" class="ball" />
-  </div>
+    <div class="ball">     
+        <!-- Hexágonos (20 paneles blancos) -->
+        <div class="panel white h1"></div>
+        <div class="panel white h2"></div>
+        <div class="panel white h3"></div>
+        <div class="panel white h4"></div>
+        <div class="panel white h5"></div>
+        <div class="panel white h6"></div>
+        <div class="panel white h11"></div>
+        <div class="panel white h12"></div>
+        <div class="panel white h13"></div>
+        <div class="panel white h14"></div>
+        <div class="panel white h15"></div>
 
+  </div>
   <script src="../js/script.js"></script>
 </body>
 </html>
