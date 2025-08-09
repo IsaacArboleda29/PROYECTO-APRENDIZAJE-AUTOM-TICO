@@ -60,11 +60,11 @@ body {
   background-color: rgba(252, 32, 32, 0.644);
   color: rgb(94, 1, 1);
   text-shadow:
-    0 0 5px #815a5a,
-    0 0 10px #802d2d,
-    0 0 20px #892020,
-    0 0 40px #570b0b,
-    0 0 80px #580101;
+    0 0 5px #683232,
+    0 0 10px #6a2525,
+    0 0 20px #6d1a1a,
+    0 0 40px #440909,
+    0 0 80px #3f0101;
   transform-origin: right;
   transform: perspective(100px) rotateY(-15deg);
 }
@@ -75,11 +75,11 @@ body {
   border-color: #ff002f;
   box-shadow: 0 0 30px #ff002f;
   text-shadow:
-    0 0 5px #fe5e5e,
+    0 0 5px #fd0d0d,
     0 0 10px #ff5656,
     0 0 20px #ff4040,
     0 0 40px #ff2121,
-    0 0 80px #ff0000;
+    0 0 80px #ffacac;
   transform-origin: left;
   transform: perspective(100px) rotateY(15deg);
 }
