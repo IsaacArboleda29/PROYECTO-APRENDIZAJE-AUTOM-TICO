@@ -39,13 +39,13 @@ body {
 
 .box {
   display: flex;
-  margin: -5px auto 0 auto; /* margen arriba pequeño, centrado horizontal */
-  width: fit-content; /* para que el ancho sea el necesario */
-  align-self: center; /* centra en contenedor flex column */
+  margin: -5px auto 0 auto;
+  width: fit-content;
+  align-self: center;
 }
 
 .box .inner {
-  width: 710px; /* aumentado para que el box sea 30% más largo */
+  width: 710px;
   height: 180px;
   line-height: 200px;
   font-size: 4em;
@@ -59,7 +59,7 @@ body {
 .box .inner:first-child {
   background-color: rgba(252, 32, 32, 0.644);
   color: rgb(94, 1, 1);
-      text-shadow:
+  text-shadow:
     0 0 5px #815a5a,
     0 0 10px #802d2d,
     0 0 20px #892020,
@@ -70,12 +70,11 @@ body {
 }
 
 .box .inner:last-child {
-
   background-color: rgba(205, 92, 92, 0.3);
   color: rgba(252, 32, 32, 0.686);
   border-color: #ff002f;
   box-shadow: 0 0 30px #ff002f;
-    text-shadow:
+  text-shadow:
     0 0 5px #fe5e5e,
     0 0 10px #ff5656,
     0 0 20px #ff4040,
@@ -88,7 +87,6 @@ body {
 .box .inner span {
   position: absolute;
   animation: marquee 5s linear infinite;
-  
 }
 
 .box .inner:first-child span {
@@ -105,7 +103,7 @@ body {
   }
 }
 
-/* Glassmorphism más grande */
+/* Glassmorphism container */
 .container {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 30px;
@@ -123,13 +121,13 @@ body {
 .subtitulo {
   font-size: 28px;
   margin-bottom: 30px;
-  color: #fff; /* blanco puro */
+  color: #fff;
   text-shadow:
     0 0 5px #fff,
     0 0 10px #fff,
     0 0 20px #fff,
     0 0 0px #fff;
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 /* Escudos y formulario */
@@ -199,7 +197,7 @@ form {
   justify-content: center;
 }
 
-/* Select mejorado */
+/* Select personalizado */
 .custom-select {
   position: relative;
   display: inline-block;
@@ -250,7 +248,7 @@ form {
   transform: translateY(-50%) rotate(180deg);
 }
 
-/* Botón estándar que tenías antes (no usado porque tienes el animado) */
+/* Botón estándar (no usado) */
 button {
   padding: 10px 20px;
   background-color: #0077cc;
@@ -309,43 +307,43 @@ button:hover {
 
 /* Balón girando fijo en pie pantalla */
 .ball {
-    position: fixed;
-    bottom: -175px;
-    left: 50%;
-    width: 300px;
-    height: 300px;
-    transform-style: preserve-3d;
-    transform: translateX(-50%) rotateX(-20deg) rotateY(30deg);
-    animation: spin 30s linear infinite;
-    will-change: transform;
-    cursor: pointer;
-    z-index: 1000;
+  position: fixed;
+  bottom: -175px;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  transform: translateX(-50%) rotateX(-20deg) rotateY(30deg);
+  animation: spin 30s linear infinite;
+  will-change: transform;
+  cursor: pointer;
+  z-index: 1000;
 }
 
 @keyframes spin {
-    from {
-        transform: translateX(-50%) rotateX(-20deg) rotateY(0deg);
-    }
-    to {
-        transform: translateX(-50%) rotateX(-20deg) rotateY(360deg);
-    }
+  from {
+    transform: translateX(-50%) rotateX(-20deg) rotateY(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotateX(-20deg) rotateY(360deg);
+  }
 }
 
 .panel {
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    backface-visibility: hidden;
-    transition: transform 0.1s ease;
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  backface-visibility: hidden;
+  transition: transform 0.1s ease;
 }
 
 .white {
-    background-color: #f8f8f871;
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    filter: brightness(0.95);
+  background-color: #f8f8f871;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  filter: brightness(0.95);
 }
 
-/* Posicionamiento 3D de los paneles Hexágonos (20) */
+/* Posicionamiento 3D de paneles hexágonos */
 .h1  { transform: rotateX(31.72deg)  translateZ(120px); }
 .h2  { transform: rotateY(72deg)    rotateX(31.72deg)  translateZ(120px); }
 .h3  { transform: rotateY(144deg)   rotateX(31.72deg)  translateZ(120px); }
@@ -498,4 +496,87 @@ button:hover {
   50% {
     box-shadow: 0 0 15px #ff4d6d, 0 0 30px #ff4d6d, 0 0 45px #ff4d6d, 0 0 75px #ff4d6d;
   }
+}
+
+/* Modal predicción */
+#predictionModal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+#predictionModal > div {
+  background: rgba(45, 45, 45, 1);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 600px;
+  width: 95%;
+  min-height: 200px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  --x: 50%;
+  --y: 50%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Glow radial siguiendo el cursor */
+#predictionModal > div::before {
+  content: '';
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, var(--clr, rgb(255, 0, 47)), transparent 60%);
+  width: 700px;
+  height: 700px;
+  opacity: 0;
+  transition: opacity 0.5s, top 0s, left 0s;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+#predictionModal > div:hover::before {
+  opacity: 1;
+}
+
+/* Fondo semitransparente encima para suavizar */
+#predictionModal > div::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 13px;
+  background: rgba(45, 45, 45, 0.75);
+  z-index: 1;
+}
+
+/* Contenido del modal siempre encima */
+#predictionModal > div > * {
+  position: relative;
+  z-index: 2;
+}
+#predictionModal .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+  z-index: 10; /* muy arriba para estar sobre todo */
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+#predictionModal .close:hover {
+  color: #ff002f;
 }

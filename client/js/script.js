@@ -42,6 +42,13 @@ const escudo2Img = document.getElementById('escudo2');
 const nombre1 = document.getElementById('nombre1');
 const nombre2 = document.getElementById('nombre2');
 
+const modal = document.getElementById('predictionModal');
+const modalResult = document.getElementById('modalResult');
+const modalGoles = document.getElementById('modalGoles');
+const modalTiros = document.getElementById('modalTiros');
+const modalTarjetas = document.getElementById('modalTarjetas');
+const closeBtn = document.querySelector('.close');
+
 equipos.forEach(equipo => {
   const option1 = document.createElement('option');
   option1.value = equipo;
@@ -62,7 +69,7 @@ function mostrarEscudoYNombre(equipo, imgElement, nombreElement, containerElemen
     nombreElement.style.display = 'block';
 
     containerElement.classList.remove('show-left', 'show-right');
-    void containerElement.offsetWidth;
+    void containerElement.offsetWidth; // restart animation
 
     if (lado === 'left') {
       containerElement.classList.add('show-left');
@@ -93,16 +100,55 @@ document.getElementById('predictBtn').addEventListener('click', function (e) {
   const team2 = team2Select.value;
 
   if (team1 === "" || team2 === "") {
-    document.getElementById('result').innerText = "Selecciona ambos equipos.";
+    alert("Selecciona ambos equipos.");  // Evitar abrir modal si no está todo
     return;
   }
 
   if (team1 === team2) {
-    document.getElementById('result').innerText = "Por favor, selecciona equipos diferentes.";
+    alert("Por favor, selecciona equipos diferentes.");
     return;
   }
 
+  // Simula datos de predicción
   const randomPercentage = (Math.random() * 100).toFixed(2);
-  const result = `${team1} tiene ${randomPercentage}% de probabilidad de ganar contra ${team2}`;
-  document.getElementById('result').innerText = result;
+  const goles1 = Math.floor(Math.random() * 5);
+  const goles2 = Math.floor(Math.random() * 5);
+  const tirosEsquina1 = Math.floor(Math.random() * 10);
+  const tirosEsquina2 = Math.floor(Math.random() * 10);
+  const tarjetas1 = Math.floor(Math.random() * 4);
+  const tarjetas2 = Math.floor(Math.random() * 4);
+
+  // Actualiza texto del modal
+  modalResult.textContent = `${team1} tiene ${randomPercentage}% de probabilidad de ganar contra ${team2}.`;
+  modalGoles.textContent = `Goles: ${team1} ${goles1} - ${goles2} ${team2}`;
+  modalTiros.textContent = `Tiros de esquina: ${team1} ${tirosEsquina1} - ${tirosEsquina2} ${team2}`;
+  modalTarjetas.textContent = `Tarjetas amarillas: ${team1} ${tarjetas1} - ${tarjetas2} ${team2}`;
+
+  // Mostrar modal
+  modal.style.display = 'flex';
+});
+
+// Cerrar modal con botón X
+closeBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+// Cerrar modal haciendo clic fuera del contenido
+window.addEventListener('click', (event) => {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+});
+
+const modalContent = document.querySelector('#predictionModal > div');
+
+modalContent.addEventListener('mousemove', (e) => {
+  // Obtener posición relativa del mouse dentro del div
+  const rect = modalContent.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  // Actualizar variables CSS --x y --y
+  modalContent.style.setProperty('--x', x + 'px');
+  modalContent.style.setProperty('--y', y + 'px');
 });
