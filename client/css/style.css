@@ -39,7 +39,7 @@ body {
 
 .box {
   display: flex;
-  margin: -5px auto 0 auto;
+  margin: 60px auto 0 auto;
   width: fit-content;
   align-self: center;
 }
@@ -580,3 +580,24 @@ button:hover {
 #predictionModal .close:hover {
   color: #ff002f;
 }
+
+/* ===== SLIDER DE LOGOS ===== */
+.logos {
+  overflow: hidden;
+  white-space: nowrap;
+  background: transparent;
+  padding: 2px 0;
+}
+
+.logos-slide img {
+  height: 60px;
+  margin: 0 25px;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logos-slide img:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+}
+

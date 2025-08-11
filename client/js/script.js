@@ -152,3 +152,37 @@ modalContent.addEventListener('mousemove', (e) => {
   modalContent.style.setProperty('--x', x + 'px');
   modalContent.style.setProperty('--y', y + 'px');
 });
+
+// SLIDER INFINITO FLUIDO
+const logosContainer = document.getElementById("logos");
+const slide = document.getElementById("slide");
+
+// Clonamos el contenido para dar la ilusión de infinito
+const clone = slide.cloneNode(true);
+logosContainer.appendChild(clone);
+
+let scrollSpeed = 1.5; // Velocidad (px/frame)
+let position = 0;
+
+function animateSlider() {
+  position -= scrollSpeed;
+  
+  // Cuando haya pasado la mitad del contenido, reiniciamos
+  if (Math.abs(position) >= slide.offsetWidth) {
+    position = 0;
+  }
+  
+  // Aplicamos el desplazamiento a todo el contenedor
+  logosContainer.style.transform = `translateX(${position}px)`;
+  
+  requestAnimationFrame(animateSlider);
+}
+
+// Inicia animación
+logosContainer.style.display = "flex";
+logosContainer.style.whiteSpace = "nowrap";
+logosContainer.style.overflow = "hidden";
+logosContainer.style.willChange = "transform";
+
+animateSlider();
+
