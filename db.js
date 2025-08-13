@@ -1,14 +1,15 @@
-const { Client } = require('pg');
+const { Pool } = require('pg');
 
-const client = new Client({
+const pool = new Pool({
   host: 'localhost',
-  port: 5432, // Puerto por defecto de PostgreSQL
-  user: 'upsbet_user', // El que creaste en pgAdmin
+  port: 5432,
+  user: 'upsbet_user',
   password: '12345',
-  database: 'upsbet_db' // La que creaste en PostgreSQL
+  database: 'upsbet_db'
 });
 
-client.connect()
-  .then(() => console.log('Conexión exitosa a PostgreSQL'))
-  .catch(err => console.error('Error de conexión', err))
-  .finally(() => client.end());
+pool.on('error', (err) => {
+  console.error('Unexpected error on idle client', err);
+});
+
+module.exports = pool;

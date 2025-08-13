@@ -1,8 +1,10 @@
 {
   "name": "proyecto-aprendizaje-autom-tico",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server/app.js",
   "scripts": {
+    "start": "node server/app.js",
+    "dev": "nodemon server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -10,6 +12,12 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
     "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
